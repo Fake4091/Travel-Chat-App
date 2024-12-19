@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% comment %} sign up form goes here (delete) {% endcomment %}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{form}}
+  <button>Submit</button>
+</form>
+{% endblock content %}
