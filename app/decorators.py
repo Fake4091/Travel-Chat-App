@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 
 # Used to validify if a user if unathenticated or not.
+
 def unauthenticated_user(view_func):
 
   def wrapper_func(request, *args, **kwargs):
@@ -28,4 +29,4 @@ def allowed_users(allowed_roles=[]):
           return(HttpResponse)
     
     return wrapper_func
-  return decorator
+  return decorator 
