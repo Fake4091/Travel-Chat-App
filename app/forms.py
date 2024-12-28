@@ -7,3 +7,6 @@ class CreateUserForm(UserCreationForm):
   class Meta:
     model = User
     fields = ['username', 'email', 'password1', 'password2']
+
+class ServerName(forms.Form):
+  server_name = forms.CharField(max_length=100)

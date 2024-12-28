@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from app.decorators import *
 from django.contrib.auth.models import Group
 from app.models import *
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -55,4 +56,34 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def home_view(request):
+  # To make our own user objects that we can connect to other models i check for the user in our web users and if it isnt there i create it.
+  try:
+    WebUser.objects.get(name=request.user)
+  except:
+    print(f'creating new web user - {request.user}')
+    new_web_user = WebUser(name=request.user)
+    new_web_user.save()
+
   return render(request, 'home.html', {})
+
+@login_required(login_url='login')
+def join_view(request):
+  print(Server.objects.all())
+  form = ServerName(request.GET)
+  data = Server.objects.all()
+  if form.is_valid():
+    server_name = form.cleaned_data['server_name']
+    characters = len(server_name)
+    data_wanted = []
+    for i in data:
+      if i.name[:characters] == server_name:
+        data_wanted.append(i)
+    return render(request, 'join.html', {'data': data_wanted, 'form': form})
+
+  return render(request, 'join.html', {'data': data, 'form': form})
+
+
+@login_required(login_url='login')
+def join_success_view(request, server_name):
+  server_joined = Server.objects.get(name=server_name)
+  return render(request, 'join_success.html', {'name' : server_name})
