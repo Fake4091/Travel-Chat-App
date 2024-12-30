@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -28,9 +28,9 @@ class Role(models.Model):
     # e.g. banPerms = models.BooleanField(), kickPerms = models.BooleanField(), etc.
 
 
-class User(models.Model):
+class WebUser(models.Model):
     name = models.CharField(max_length=100)
-    channels = models.ManyToManyField(
+    servers = models.ManyToManyField(
         Server, related_name="users", related_query_name="user"
     )
     roles = models.ManyToManyField(
