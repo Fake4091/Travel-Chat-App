@@ -4,7 +4,8 @@
 {% comment %} sign up form goes here (delete) {% endcomment %}
 <form action="" method="POST">
   {% csrf_token %}
-  {{form}}
+  {{form.as_p}}
   <button>Submit</button>
 </form>
+<p class="">Already have an account?<a href="{% url "login" %}" class=""> Log in</a></p>
 {% endblock content %}

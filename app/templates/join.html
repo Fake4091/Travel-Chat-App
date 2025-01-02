@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<form method="GET" action="">
+    {{form.as_p}}
+    {% for i in data %}
+    {{i}}
+    <button><a href="join_success/{{i.name}}">Join</a></button>
+    {% endfor %}
+</form>
+{% endblock content %}
