@@ -13,9 +13,11 @@ urlpatterns = [
 
     # main pages
     path("home", home_view, name="home"),
+    path("home/<server>", home_server_view, name="home-server" ),
+    path("home/<server>/<channel>", home_channel_view, name='home-channel'),
 
     # server based
-    path("join", join_view, name="join"),
-    path("join_success/<server_name>", join_success_view, name="join_success")
+    path("join-server", join_server_view, name="join-server"),
+    path("join_success/<server_name>", join_success_view, name="join_success"),
 
 ]

@@ -18,14 +18,14 @@ class Channel(models.Model):
     )
 
 
-# class Role(models.Model):
+class Role(models.Model):
 # allows for different roles on a per channel basis
-# channel = models.ForeignKey(
-# Server,
-# on_delete=models.CASCADE,
-# related_name="roles",
-# related_query_name="role",
-# )
+    channel = models.ForeignKey(
+    Server,
+    on_delete=models.CASCADE,
+    related_name="roles",
+    related_query_name="role",
+    )
 # list off permissions as booleans, then later we create instances of this class
 # e.g. banPerms = models.BooleanField(), kickPerms = models.BooleanField(), etc.
 
@@ -45,4 +45,5 @@ class Message(models.Model):
     channel = models.ForeignKey(
         Channel, on_delete=models.CASCADE, related_name="messages"
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="messages")
+    user_profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="messages")
+    date_time = models.DateTimeField()

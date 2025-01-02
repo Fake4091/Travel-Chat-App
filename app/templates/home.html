@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+
 <a class="" href="{% url "logout" %}">Logout</a>
-<a class="" href="{% url "join" %}" ><button class="">New Sever</button></a>
+<a class="" href="{% url "join-server" %}" ><button class="">Join Sever</button></a>
+
+{% for i in servers %}
+  <br>
+  <a href="home/{{i.name}}"><button>{{i.name}}</button></a>
+{% endfor %}
+
 {% endblock content %}

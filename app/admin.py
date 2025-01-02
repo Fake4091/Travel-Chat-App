@@ -6,6 +6,6 @@ from app.models import *
 admin.site.register(Server)
 admin.site.register(Channel)
 admin.site.register(Role)
-admin.site.register(WebUser)
+admin.site.register(Profile)
 admin.site.register(Message)
 
