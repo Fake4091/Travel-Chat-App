@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
 # Create your models here.
 
 
@@ -17,19 +18,20 @@ class Channel(models.Model):
     )
 
 
-class Role(models.Model):
-    # allows for different roles on a per channel basis
-    channel = models.ManyToManyField(
-        Server,
-        related_name="roles",
-        related_query_name="role",
-    )
-    # list off permissions as booleans, then later we create instances of this class
-    # e.g. banPerms = models.BooleanField(), kickPerms = models.BooleanField(), etc.
+# class Role(models.Model):
+# allows for different roles on a per channel basis
+# channel = models.ForeignKey(
+# Server,
+# on_delete=models.CASCADE,
+# related_name="roles",
+# related_query_name="role",
+# )
+# list off permissions as booleans, then later we create instances of this class
+# e.g. banPerms = models.BooleanField(), kickPerms = models.BooleanField(), etc.
 
 
-class WebUser(models.Model):
-    name = models.CharField(max_length=100)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     servers = models.ManyToManyField(
         Server, related_name="users", related_query_name="user"
     )
