@@ -10,3 +10,9 @@ class CreateUserForm(UserCreationForm):
 
 class ServerName(forms.Form):
   server_name = forms.CharField(max_length=100)
+
+class CreateServer(forms.Form):
+  server_name = forms.CharField(max_length=100)
+
+class ChatBox(forms.Form):
+  message = forms.CharField(max_length=250)

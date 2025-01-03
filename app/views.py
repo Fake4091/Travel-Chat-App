@@ -8,6 +8,7 @@ from app.decorators import *
 from django.contrib.auth.models import Group
 from app.models import *
 from django.contrib.auth.models import User
+import datetime
 
 
 # Sign-up / Log-in area -----------------------------------------------------------------------------------
@@ -60,11 +61,47 @@ def logout_view(request):
 
 @login_required(login_url="login")
 def home_view(request):
-    return render(request, "home.html", {})
+    servers_user_in = request.user.profile.servers.all()
+
+    return render(request, "home.html", {"servers": servers_user_in})
+
+
+def home_server_view(request, server):
+    server_needed = Server.objects.get(name=server)
+    channels = Channel.objects.filter(server=server_needed)
+
+    return render(
+        request, "home-server.html", {"server": server_needed, "channels": channels}
+    )
+
+
+def home_channel_view(request, server, channel):
+    channel_needed = Channel.objects.get(name=channel)
+    print(channel_needed.name)
+    form = ChatBox(request.POST)
+
+    if form.is_valid():
+        message = form.cleaned_data["message"]
+
+        new_message = Message(
+            text=message,
+            channel=channel_needed,
+            user_profile=request.user.profile,
+            date_time=datetime.datetime.now(),
+        )
+        new_message.save()
+
+    messages = Message.objects.filter(channel=channel_needed)
+
+    return render(
+        request,
+        "home-channel.html",
+        {"form": form, "server": server, "channel": channel, "messages": messages},
+    )
 
 
 @login_required(login_url="login")
-def join_view(request):
+def join_server_view(request):
     print(Server.objects.all())
     form = ServerName(request.GET)
     data = Server.objects.all()
@@ -75,7 +112,7 @@ def join_view(request):
         for i in data:
             if i.name[:characters] == server_name:
                 data_wanted.append(i)
-        return render(request, "join.html", {"data": data_wanted, "form": form})
+            return render(request, "join.html", {"data": data_wanted, "form": form})
 
     return render(request, "join.html", {"data": data, "form": form})
 
@@ -84,4 +121,3 @@ def join_view(request):
 def join_success_view(request, server_name):
     request.user.profile.servers.add(Server.objects.get(name=server_name))
     return render(request, "join_success.html", {"name": server_name})
-
