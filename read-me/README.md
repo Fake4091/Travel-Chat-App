@@ -9,7 +9,7 @@
 
   COLOR PALETTE            |  DEMO
 :-------------------------:|:-------------------------:
-<img style="width: 100%;" src="color-pallete.png" alt="Color Palette">   |  <video width=100% controls><source src="demo.mp4" type="video/mp4">DEMO Video</video>
+<img style="width: 100%;" src="travel-color.png" alt="Color Palette">   |  <video width=100% controls><source src="demo.mp4" type="video/mp4">DEMO Video</video>
 </div>
 
 ## **KEY FEATURES:**

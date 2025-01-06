@@ -8,4 +8,4 @@ admin.site.register(Channel)
 admin.site.register(Role)
 admin.site.register(Profile)
 admin.site.register(Message)
-
+admin.site.register(Business)

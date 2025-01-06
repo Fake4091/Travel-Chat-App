@@ -16,3 +16,10 @@ class CreateServer(forms.Form):
 
 class ChatBox(forms.Form):
   message = forms.CharField(max_length=250)
+
+class Apply(forms.Form):
+  business = forms.CharField(max_length=200)
+  picture = forms.ImageField()
+
+class GetServer(forms.Form):
+  server = forms.CharField(max_length=200)
