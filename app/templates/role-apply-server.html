@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <h1>{{server}}</h1>
+
+  <h2>Select Channel</h2>
+
+  {% for i in channels %}
+  <br>
+    {{i.name}}<button><a href="role-apply/{{i.name}}">Select</a></button>
+  {% endfor %}
+
+{% endblock content %}

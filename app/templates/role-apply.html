@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1>Select Server</h1>
+
+<form method="GET" action="">
+
+  {{form.as_p}}
+
+</form>
+
+{% for i in data %}
+  <br>
+  {{i.name}}<button><a href="role-apply/{{i.name}}">Select</a></button>
+{% endfor %}
+
+{% endblock content %}

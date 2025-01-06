@@ -49,3 +49,13 @@ class Message(models.Model):
     )
     user_profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="messages")
     date_time = models.DateTimeField()
+
+class Business(models.Model):
+
+    business = models.CharField(max_length=200)
+
+    picture = models.ImageField()
+
+    server = models.CharField(max_length=200)
+
+    channel = models.CharField(max_length=200)

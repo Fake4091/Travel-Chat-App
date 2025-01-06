@@ -11,6 +11,11 @@ urlpatterns = [
     path('logout', logout_view, name="logout"),
     path("signup", signup_view, name="signup"),
 
+    # roles
+    path('role-apply', role_apply_view, name="role-apply"),
+    path('role-apply/<server>', role_apply_server_view, name="role-apply-server"),
+    path('role-apply/<server>/<channel>', role_apply_channel_view, name="role-apply-server-channel"),
+
     # main pages
     path("home", home_view, name="home"),
     path("home/<server>", home_server_view, name="home-server" ),

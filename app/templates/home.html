@@ -6,6 +6,7 @@
 <a class="" href="{% url "logout" %}">Logout</a>
 <a class="" href="{% url "join-server" %}"><button class="">Join Sever</button></a>
 <a class="" href="{% url "roles-page" %}">{{request.user}}</a>
+<a class="" href="{% url "role-apply" %}"><button>Business Owner?</button></a>
 
 {% for i in servers %}
   <br>
