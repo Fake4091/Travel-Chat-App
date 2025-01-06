@@ -13,6 +13,8 @@ import datetime
 
 
 
+
+
 # Sign-up / Log-in area -----------------------------------------------------------------------------------
 
 
@@ -72,6 +74,7 @@ def home_server_view(request, server):
     server_needed = Server.objects.get(name=server)
     channels = Channel.objects.filter(server=server_needed)
 
+
     return render(
         request, "home-server.html", {"server": server_needed, "channels": channels}
     )
@@ -79,7 +82,19 @@ def home_server_view(request, server):
 
 def home_channel_view(request, server, channel):
     channel_needed = Channel.objects.get(name=channel)
-    print(channel_needed.name)
+    profile_object = Profile.objects.get(user=request.user)
+
+    try: 
+        if profile_object.roles.get(channel=channel_needed).name == 'Business Owner' :
+            print('Business Owner')
+        elif profile_object.roles.get(channel=channel_needed).name == 'Tourist':
+            print('Tourist')
+    except:
+        new_role = Role(name='Tourist', channel=channel_needed)
+        new_role.save()
+        profile_object.roles.add(new_role)
+
+    role = profile_object.roles.get(channel=channel_needed).name
     form = ChatBox(request.POST)
 
     if form.is_valid():
@@ -98,7 +113,7 @@ def home_channel_view(request, server, channel):
     return render(
         request,
         "home-channel.html",
-        {"form": form, "server": server, "channel": channel, "messages": messages},
+        {"form": form, "server": server, "channel": channel, "messages": messages, "role": role},
     )
 
 
@@ -113,9 +128,12 @@ def join_server_view(request):
         data_wanted = []
         for i in data:
             print(i.name[:characters] == server_name) 
+            print(i.name[:characters] == server_name) 
             if i.name[:characters] == server_name:
                 print(i)
+                print(i)
                 data_wanted.append(i)
+        return render(request, "join.html", {"data": data_wanted, "form": form})
         return render(request, "join.html", {"data": data_wanted, "form": form})
 
     return render(request, "join.html", {"data": data, "form": form})
@@ -124,6 +142,16 @@ def join_server_view(request):
 @login_required(login_url="login")
 def join_success_view(request, server_name):
     request.user.profile.servers.add(Server.objects.get(name=server_name))
+
+    return redirect('home')
+
+@login_required(login_url="login")
+def roles_page_view(request):
+    roles = Role.objects.all()
+  
+
+
+    return render(request, 'roles-page.html', {"roles": roles})
 
     return redirect('home')
 
