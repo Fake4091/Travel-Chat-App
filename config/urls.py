@@ -15,6 +15,7 @@ urlpatterns = [
     path("home", home_view, name="home"),
     path("home/<server>", home_server_view, name="home-server" ),
     path("home/<server>/<channel>", home_channel_view, name='home-channel'),
+    path("roles", roles_page_view, name="roles-page"),
 
     # server based
     path("join-server", join_server_view, name="join-server"),

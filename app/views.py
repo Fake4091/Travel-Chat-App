@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 import datetime
 
 
+
+
 # Sign-up / Log-in area -----------------------------------------------------------------------------------
 
 
@@ -110,9 +112,11 @@ def join_server_view(request):
         characters = len(server_name)
         data_wanted = []
         for i in data:
+            print(i.name[:characters] == server_name) 
             if i.name[:characters] == server_name:
+                print(i)
                 data_wanted.append(i)
-            return render(request, "join.html", {"data": data_wanted, "form": form})
+        return render(request, "join.html", {"data": data_wanted, "form": form})
 
     return render(request, "join.html", {"data": data, "form": form})
 
@@ -120,4 +124,13 @@ def join_server_view(request):
 @login_required(login_url="login")
 def join_success_view(request, server_name):
     request.user.profile.servers.add(Server.objects.get(name=server_name))
-    return render(request, "join_success.html", {"name": server_name})
+
+    return redirect('home')
+
+@login_required(login_url="login")
+def roles_page_view(request):
+    roles = Role.objects.all()
+  
+
+
+    return render(request, 'roles-page.html', {"roles": roles})

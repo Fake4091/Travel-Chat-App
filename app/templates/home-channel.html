@@ -20,6 +20,7 @@
     <button>send</button>
   </form>
   {% for i in messages %}
+  <h3>{{i.user_profile.user}} - {{i.date_time}}</h3>
   <p>{{i.text}}</p>
   {% endfor %}
 </body>

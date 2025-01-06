@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>Congrats!</h1>
 
-<p>You've successfully joined "{{name}}"</p>
+{% for i in roles %}
+  {{i}}
+{% endfor %}
 
 {% endblock content %}
