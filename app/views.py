@@ -73,16 +73,19 @@ def home_view(request):
 def home_server_view(request, server):
     server_needed = Server.objects.get(name=server)
     channels = Channel.objects.filter(server=server_needed)
+    servers_user_in = request.user.profile.servers.all()
 
 
     return render(
-        request, "home-server.html", {"server": server_needed, "channels": channels}
+        request, "home-server.html", {"servers": servers_user_in, "server": server_needed, "channels": channels}
     )
 
 
 def home_channel_view(request, server, channel):
     channel_needed = Channel.objects.get(name=channel)
     profile_object = Profile.objects.get(user=request.user)
+    servers_user_in = request.user.profile.servers.all()
+
 
     try: 
         if profile_object.roles.get(channel=channel_needed).name == 'Business Owner' :
@@ -113,7 +116,7 @@ def home_channel_view(request, server, channel):
     return render(
         request,
         "home-channel.html",
-        {"form": form, "server": server, "channel": channel, "messages": messages, "role": role},
+        {"servers": servers_user_in, "form": form, "server": server, "channel": channel, "messages": messages, "role": role},
     )
 
 
@@ -162,3 +165,48 @@ def roles_page_view(request):
 
 
     return render(request, 'roles-page.html', {"roles": roles})
+
+def role_apply_view(request):
+    servers_user_in = request.user.profile.servers.all()
+    form = ServerName(request.GET)
+    data = Server.objects.all()
+    if form.is_valid():
+        server_name = form.cleaned_data["server_name"]
+        characters = len(server_name)
+        data_wanted = []
+        for i in data:
+            print(i.name[:characters] == server_name) 
+            print(i.name[:characters] == server_name) 
+            if i.name[:characters] == server_name:
+                print(i)
+                print(i)
+                data_wanted.append(i)
+        return render(request, "join.html", {"data": data_wanted, "form": form})
+    
+    return render(request, 'role-apply.html', {"form": form, "data": data})
+
+def role_apply_server_view(request, server):
+    server_object = Server.objects.get(name=server)
+
+    channels = Channel.objects.filter(server=server_object)
+
+
+
+    return render(request, 'role-apply-server.html', {"server": server, "channels": channels})
+
+
+
+def role_apply_channel_view(request, server, channel):
+
+    form = Apply(request.POST, request.FILES)
+
+    if form.is_valid():
+        print("success")
+        business = form.cleaned_data['business']
+        picture = form.cleaned_data['picture']
+
+        new_business = Business(business=business, picture=picture, server=server, channel=channel)
+        new_business.save()
+        return redirect("home")
+
+    return render(request, 'role-apply-channel.html', {"server": server, "channel": channel, "form": form})

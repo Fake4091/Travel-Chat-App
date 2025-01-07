@@ -5,12 +5,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/chatroom_style.css' %}">
-  <title>Travel Chat App</title>
-  {% comment %} needs nav bar (delete) {% endcomment %}
+  <link rel="stylesheet" href="{% static "css/themify-icons.css" %}">
+  <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-  {% block content %}
+  {% comment %} Navbar (Sort Of) {% endcomment %}
+  <div class="modal">
+    <div class="modal__dialog">
+      <div class="modal__close">
+        <a href="{% url "logout" %}" class="modal__icon">
+          <i class="ti-close" aria-hidden="true"></i>
+        </a>
+        <span class="modal__note"><a href="{% url "logout" %}">Logout</a></span>
+      </div>
+      <div class="modal__content chat">
+          <div class="modal__sidebar">
+            <div class="chat__search search">
+              <div class="search">
+                <div class="search__icon">
+                  <i class="ti-search" aria-hidden="true"></i>
+                </div>
+                <input
+                  type="search"
+                  class="search__input"
+                  placeholder="Search Server"
+                />
+                <div class="search__icon search__icon_right">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div class="chat__users">
+              <ul class="users">
+                {% for i in servers %}
+                <li class="users__item">
+                    <a href="{% url 'home_server' i.name %}">{{i.name}}</a>
+                </li>
+                {% endfor %}
+                <li class="users__item">
+                  <div class="users__avatar avatar">
+                    <a href="#" class="avatar__wrap">
+                      <img
+                        class="avatar__img"
+                        src="http://placehold.it/35x35"
+                        width="35"
+                        height="35"
+                        alt="avatar image"
+                      />
+                    </a>
+                  </div>
+                  <span class="users__note"><a href="{% url "home" %}">Homepage</a></span>
+                  <div class="counter"></div>
+                </li>
+                <li class="users__item">
+                  <div class="users__avatar avatar">
+                    <a href="#" class="avatar__wrap">
+                      <img
+                        class="avatar__img"
+                        src="http://placehold.it/35x35"
+                        width="35"
+                        height="35"
+                        alt="avatar image"
+                      />
+                    </a>
+                  </div>
+                  <span class="users__note">Role Appeal</span>
+                  <div class="counter"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+    {% block content %}
   
-  {% endblock content %}
+    {% endblock content %}
+    </div>
+  </div>
 </body>
 </html>
