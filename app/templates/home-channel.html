@@ -7,9 +7,9 @@
         <div class="head__avatar avatar avatar_larger">
           <a href="#" class="avatar__wrap"> M </a>
         </div>
-        <div class="head__title">MaximModus</div>
+        <div class="head__title">{{ channel }}</div>
         <div class="head__note">
-          <span>8 участников</span>
+          {% comment %} <span>8 участников</span> {% endcomment %}
           <span class="head__icon"></span>
         </div>
       </div>
@@ -260,7 +260,7 @@
         </div>
       </div>
       <div class="chatbox__row">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
           {% csrf_token %} 
           <div class="enter">
             <div class="enter__submit">
@@ -270,6 +270,12 @@
             </div>
             <div class="enter__textarea">
               {{form.message}}
+            </div>
+            <div class="enter__icons">
+              <a href="#" class="enter__icon">
+                {{ form.img }}
+                {% comment %} <i class="fa fa-paperclip" aria-hidden="true"></i> {% endcomment %}
+              </a>
             </div>
           </div>
         </form>
