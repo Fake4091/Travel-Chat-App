@@ -25,4 +25,4 @@
 
 3. Run the server with `python manage.py runserver` on Windows or `python3 manage.py runserver` on MacOS
 
-4. go to <http://localhost:8000> in your browser
+4. go to <a href="http://localhost:8000">localhost:8000</a> in your browser (it will not have any servers or channels, so you will have to add some in the <a href="http://localhost:8000/admin">admin panel</a>)
