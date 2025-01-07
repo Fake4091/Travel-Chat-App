@@ -1,1 +1,1 @@
-read-me/README.md
+./read-me/README.md
