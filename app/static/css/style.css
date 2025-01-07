@@ -1,3 +1,9 @@
+/* My CSS */
+.top-logo{
+  width: 25%;
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -84,7 +90,7 @@ h6 {
 .nav-scroll .navbar-nav > li > a {
   color: #333;
 }
-.nav-scroll .navbar-brand img {
+.nav-scroll .brand-navbar img {
   -webkit-transform: scale(1.03) !important;
   transform: scale(1.03) !important;
 }
@@ -443,7 +449,7 @@ input {
   border-radius: 2rem;
   border: 0;
   background: #7a60ff;
-  background: linear-gradient(to left, #7a60ff, #cd9ffa);
+  background: linear-gradient(to left, #ADACB5, #EAE8FF);
   cursor: pointer;
 }
 .contact-info {
@@ -518,8 +524,8 @@ input {
   }
 }
 @media all and (max-width: 768px) {
-  .nav-scroll .navbar-brand img,
-  .navbar-brand img {
+  .nav-scroll .brand-navbar img,
+  .brand-navbar img {
     transform: scale(0.75) !important;
     -webkit-transform: scale(0.75) !important;
   }

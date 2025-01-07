@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="{% static "css/animate.css" %}" /> 
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" /> 
     <link rel="stylesheet" href="{% static "css/style.css" %}" /> 
-    <link rel="stylesheet" href="{% static "css/fontawesome-all.css" %}" />
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand navbar-logo" href="#">
-          <img src="{% static "images/logo.png" %}" alt="logo" class="logo-1" />
+        <a class="brand-navbar" href="#">
+          <img src="{% static "images/globetalk.png" %}" alt="logo" class="top-logo" />
         </a>
         <button
           class="navbar-toggler"
@@ -61,42 +63,21 @@
           <div class="row">
             <div class="col-md-8 col-sm-12">
               <div class="banner-text">
-                <h2 class="white">Best App Website Template</h2>
+                <h2 class="white">GlobeTalk!</h2>
                 <h6 class="white">
-                  This awesome template designed by
-                  <a
-                    href="http://w3Template.com"
-                    target="_blank"
-                    rel="dofollow"
-                    class="weblink"
-                    >W3 Template</a
-                  >.
+                  Talk to strangers near you!
                 </h6>
                 <p class="banner-text white">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur hendrerit neque massa, sit amet tristique ante porta
-                  ut. In sodales et justo vel vulputate. Pellentesque habitant
-                  morbi tristique senectus et netus et malesuada fames ac turpis
-                  egestas.
+                  Globe Talk is used for talking to people in areas near where  you want to Travel to!
+                  We hope we help you figure out your journey!
                 </p>
-                <ul>
-                  <li>
-                    <a href="{% url "login" %}"
-                      ><img src="{% static "images/appstore.png" %}" class="wow
-                      fadeInUp" data-wow-delay="0.4s" /></a
-                    >
-                  </li>
-                  <li>
-                    <a href="{% url "signup" %}"
-                      ><img src="{% static "images/playstore.png" %}" class="wow
-                      fadeInUp" data-wow-delay="0.7s" /></a
-                    >
-                  </li>
-                </ul>
+                <button class="btn-grad">
+                  <a href="{% url "login" %}">Enter the Chatroom</a>
+                </button>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
-              <img src="{% static "images/iphone-screen.png" %}"
+              <img src="{% static "images/globe.png" %}"
               class="img-fluid wow fadeInUp" />
             </div>
           </div>
@@ -114,9 +95,7 @@
               <h3>About</h3>
               <span class="line"></span>
               <p>
-                Sed quis nisi nisi. Proin consectetur porttitor dui sit amet
-                viverra. Fusce sit amet lorem faucibus, vestibulum ante in,
-                pharetra ante.
+                Talk to people in areas you want to go. Travelling to certain areas and finding new information.
               </p>
             </div>
             <div class="section-content text-center">
@@ -126,8 +105,7 @@
                     <i class="fa fa-life-ring" aria-hidden="true"></i>
                     <h5>Support</h5>
                     <p>
-                      Phasellus lobortis justo a magna facilisis, in commodo
-                      tellus rutrum. Sed vitae condimentum nulla.
+                      Need Help?
                     </p>
                   </div>
                 </div>
@@ -136,8 +114,7 @@
                     <i class="fa fa-mobile" aria-hidden="true"></i>
                     <h5>Cross Platform</h5>
                     <p>
-                      Phasellus lobortis justo a magna facilisis, in commodo
-                      tellus rutrum. Sed vitae condimentum nulla.
+                      Fully Mobile Friendly!
                     </p>
                   </div>
                 </div>
@@ -146,8 +123,7 @@
                     <i class="fa fa-bolt" aria-hidden="true"></i>
                     <h5>Fast</h5>
                     <p>
-                      Phasellus lobortis justo a magna facilisis, in commodo
-                      tellus rutrum. Sed vitae condimentum nulla.
+                      Get answers to your travelling questions fast!
                     </p>
                   </div>
                 </div>
@@ -166,9 +142,7 @@
               <h3>Features</h3>
               <span class="line"></span>
               <p>
-                Sed quis nisi nisi. Proin consectetur porttitor dui sit amet
-                viverra. Fusce sit amet lorem faucibus, vestibulum ante in,
-                pharetra ante.
+                We involve a database that will store all of the messages you send to your friends and tourists being able to find new places to visit.
               </p>
             </div>
             <div class="section-content text-center">

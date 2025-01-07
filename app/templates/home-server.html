@@ -4,14 +4,18 @@
 {% block title %}{{server.name}}{% endblock title %}
 
 {% block content %}
-
-
+<div class="divs_of_days">
   <h1>Server: {{server.name}}</h1>
-  
   {% for i in channels %}
     <br>
     <a href="{{server.name}}/{{i.name}}"><button>{{i.name}}</button></a>
   {% endfor %}
+
+</div>
+
+  
+  
+  
   
 
 {% endblock content %}
