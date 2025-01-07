@@ -449,7 +449,7 @@ input {
   border-radius: 2rem;
   border: 0;
   background: #7a60ff;
-  background: linear-gradient(to left, #ADACB5, #EAE8FF);
+  background: linear-gradient(to left, #adacb5, #eae8ff);
   cursor: pointer;
 }
 .contact-info {

@@ -16,15 +16,18 @@ class CreateServer(forms.Form):
 
 class ChatBox(forms.Form):
   message = forms.CharField(max_length=250, widget=forms.Textarea)
+  img = forms.ImageField(required=False)
 
   def __init__(self, *args, **kwargs):
     super(ChatBox, self).__init__(*args, **kwargs)
     for visible in self.visible_fields():
-      visible.field.widget.attrs['name'] = "enterMessage"
-      visible.field.widget.attrs['id']="enterMessage"
-      visible.field.widget.attrs['cols']="30"
-      visible.field.widget.attrs['rows']="2"
-      visible.field.widget.attrs['placeholder']="Say message..."
+      if visible.name == 'message':
+        visible.field.widget.attrs['name'] = "enterMessage"
+        visible.field.widget.attrs['id'] = "enterMessage"
+        visible.field.widget.attrs['cols'] = "30"
+        visible.field.widget.attrs['rows'] = "2"
+        visible.field.widget.attrs['placeholder'] = "Say message..."
+
 
 class Apply(forms.Form):
   business = forms.CharField(max_length=200)

@@ -44,6 +44,7 @@ class Profile(models.Model):
 
 class Message(models.Model):
     text = models.TextField()
+    img = models.ImageField(upload_to='user_images', blank=True)
     channel = models.ForeignKey(
         Channel, on_delete=models.CASCADE, related_name="messages"
     )
@@ -54,7 +55,7 @@ class Business(models.Model):
 
     business = models.CharField(max_length=200)
 
-    picture = models.ImageField()
+    picture = models.ImageField(upload_to='business_images')
 
     server = models.CharField(max_length=200)
 
