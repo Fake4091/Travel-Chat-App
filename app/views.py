@@ -11,12 +11,12 @@ from django.contrib.auth.models import User
 import datetime
 
 
+# Create your views here.
 
-
-
+def lobby_view(request):
+    return render(request, "lobby.html")
 
 # Sign-up / Log-in area -----------------------------------------------------------------------------------
-
 
 @unauthenticated_user
 def signup_view(request):
@@ -26,8 +26,8 @@ def signup_view(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
 
-            user = form.save()
-            profile = Profile(user=user)
+            form.save()
+            profile = Profile(user=User.objects.get(username=form.cleaned_data.get("username")))
             profile.save()
 
             username = form.cleaned_data.get("username")
@@ -37,7 +37,7 @@ def signup_view(request):
             # group = Group.objects.get(name='customer')
             # user.groups.add(group)
             return redirect("login")
-    return render(request, "sign-up.html", {"form": form})
+    return render(request, "log-in.html", {"form": form})
 
 
 @unauthenticated_user

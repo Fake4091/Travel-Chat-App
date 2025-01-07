@@ -2,6 +2,7 @@ from app.views import *
 
 from django.contrib import admin
 from django.urls import path
+from app.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -12,6 +13,7 @@ urlpatterns = [
     path("signup", signup_view, name="signup"),
 
     # main pages
+    path("", lobby_view, name="index"),
     path("home", home_view, name="home"),
     path("home/<server>", home_server_view, name="home-server" ),
     path("home/<server>/<channel>", home_channel_view, name='home-channel'),
