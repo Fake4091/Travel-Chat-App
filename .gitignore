@@ -1,6 +1,9 @@
 .DS_Store
 business-images/**
+business-images\**
 **/migrations
 **/__pycache__
 **/__pycache__/**
+**\__pycache__
+**\__pycache__\**
 db.sqlite3
