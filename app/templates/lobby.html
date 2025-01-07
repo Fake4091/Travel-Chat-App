@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="{% static "css/animate.css" %}" /> 
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" /> 
     <link rel="stylesheet" href="{% static "css/style.css" %}" /> 
-    <link rel="stylesheet" href="{% static "css/fontawesome-all.css" %}" />
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand navbar-logo" href="#">
-          <img src="{% static "images/logo.png" %}" alt="logo" class="logo-1" />
+        <a class="brand-navbar" href="#">
+          <img src="{% static "images/globetalk.png" %}" alt="logo" class="top-logo" />
         </a>
         <button
           class="navbar-toggler"
@@ -61,16 +63,9 @@
           <div class="row">
             <div class="col-md-8 col-sm-12">
               <div class="banner-text">
-                <h2 class="white">Best App Website Template</h2>
+                <h2 class="white">GlobeTalk!</h2>
                 <h6 class="white">
-                  This awesome template designed by
-                  <a
-                    href="http://w3Template.com"
-                    target="_blank"
-                    rel="dofollow"
-                    class="weblink"
-                    >W3 Template</a
-                  >.
+                  Talk to strangers near you!
                 </h6>
                 <p class="banner-text white">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -79,24 +74,13 @@
                   morbi tristique senectus et netus et malesuada fames ac turpis
                   egestas.
                 </p>
-                <ul>
-                  <li>
-                    <a href="{% url "login" %}"
-                      ><img src="{% static "images/appstore.png" %}" class="wow
-                      fadeInUp" data-wow-delay="0.4s" /></a
-                    >
-                  </li>
-                  <li>
-                    <a href="{% url "signup" %}"
-                      ><img src="{% static "images/playstore.png" %}" class="wow
-                      fadeInUp" data-wow-delay="0.7s" /></a
-                    >
-                  </li>
-                </ul>
+                <button class="btn-grad">
+                  <a href="{% url "login" %}">Enter the Chatroom</a>
+                </button>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
-              <img src="{% static "images/iphone-screen.png" %}"
+              <img src="{% static "images/globe.png" %}"
               class="img-fluid wow fadeInUp" />
             </div>
           </div>
