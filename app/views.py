@@ -156,15 +156,6 @@ def roles_page_view(request):
 
     return render(request, 'roles-page.html', {"roles": roles})
 
-    return redirect('home')
-
-@login_required(login_url="login")
-def roles_page_view(request):
-    roles = Role.objects.all()
-  
-
-
-    return render(request, 'roles-page.html', {"roles": roles})
 
 def role_apply_view(request):
     servers_user_in = request.user.profile.servers.all()
