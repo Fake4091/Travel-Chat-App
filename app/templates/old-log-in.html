@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<form class="" method="POST" action="">
+  {% csrf_token %}
+      <div class="">
+        <h1 class="">Log In</h1>
+          <div class="">
+            <input type="text" name="username" placeholder="Username..." class="">
+          </div>
+          <div class="">
+            <input type="password" name="password" placeholder="Password..." class="" >
+          </div> 
+          <div class""> <br>
+            <button class="">Log In</button>
+        </div>
+        {{form.errors}}
+        <div class="">
+          <p class="">Don't have an account?<a href="{% url "signup" %}" class=""> sign-up!</a></p>
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+</form>
+{% endblock content %}

@@ -11,12 +11,12 @@ from django.contrib.auth.models import User
 import datetime
 
 
+# Create your views here.
 
-
-
+def lobby_view(request):
+    return render(request, "lobby.html")
 
 # Sign-up / Log-in area -----------------------------------------------------------------------------------
-
 
 @unauthenticated_user
 def signup_view(request):
@@ -26,8 +26,8 @@ def signup_view(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
 
-            user = form.save()
-            profile = Profile(user=user)
+            form.save()
+            profile = Profile(user=User.objects.get(username=form.cleaned_data.get("username")))
             profile.save()
 
             username = form.cleaned_data.get("username")
@@ -37,7 +37,7 @@ def signup_view(request):
             # group = Group.objects.get(name='customer')
             # user.groups.add(group)
             return redirect("login")
-    return render(request, "sign-up.html", {"form": form})
+    return render(request, "log-in.html", {"form": form})
 
 
 @unauthenticated_user
@@ -73,16 +73,19 @@ def home_view(request):
 def home_server_view(request, server):
     server_needed = Server.objects.get(name=server)
     channels = Channel.objects.filter(server=server_needed)
+    servers_user_in = request.user.profile.servers.all()
 
 
     return render(
-        request, "home-server.html", {"server": server_needed, "channels": channels}
+        request, "home-server.html", {"servers": servers_user_in, "server": server_needed, "channels": channels}
     )
 
 
 def home_channel_view(request, server, channel):
     channel_needed = Channel.objects.get(name=channel)
     profile_object = Profile.objects.get(user=request.user)
+    servers_user_in = request.user.profile.servers.all()
+
 
     try: 
         if profile_object.roles.get(channel=channel_needed).name == 'Business Owner' :
@@ -113,7 +116,7 @@ def home_channel_view(request, server, channel):
     return render(
         request,
         "home-channel.html",
-        {"form": form, "server": server, "channel": channel, "messages": messages, "role": role},
+        {"servers": servers_user_in, "form": form, "server": server, "channel": channel, "messages": messages, "role": role},
     )
 
 

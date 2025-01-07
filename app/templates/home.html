@@ -1,16 +1,27 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %}
+
+{% block title %}{{request.user}}'s Homepage{% endblock title %}
+
 {% block content %}
+<div>
+  <h1 class="">Welcome, {{request.user}}!</h1>
+  <a class="" href="{% url "join-server" %}"><button class="">Join Sever</button></a>
+  <div class="divs_of_days">
+    <h2 class="">Servers</h2>
+    <ul class="">
+      {% for i in servers %}
+      <li class="">
+        <a href="{% url 'home_server' i.name %}">{{i.name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 
-<a class="" href="{% url "logout" %}">Logout</a>
-<a class="" href="{% url "join-server" %}"><button class="">Join Sever</button></a>
-<a class="" href="{% url "roles-page" %}">{{request.user}}</a>
-<a class="" href="{% url "role-apply" %}"><button>Business Owner?</button></a>
 
-{% for i in servers %}
-  <br>
-  <a href="home/{{i.name}}"><button>{{i.name}}</button></a>
-{% endfor %}
+
+
+
 
 {% endblock content %}
