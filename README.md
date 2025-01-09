@@ -7,7 +7,7 @@
 
 |                                 COLOR PALETTE                                 |                                             DEMO                                              |
 | :---------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| <img style="width: 100%;" src="read-me/travel-color.png" alt="Color Palette"> | <video width=100% controls><source src="read-me/demo.mp4" type="video/mp4">DEMO Video</video> |
+| <img style="width: 100%;" src="read-me/travel-color.png" alt="Color Palette"> | [![Video of our project](https://img.youtube.com/vi/rGayzAARV8c/maxresdefault.jpg)](https://www.youtube.com/watch?v=rGayzAARV8c) |
 
 </div>
 
