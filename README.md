@@ -17,7 +17,7 @@
 - Different channels inside of servers for major cities
 - Applying for a role as a local business
 
-## **HOW TO USE (Visual Studio Code)**
+## **HOW TO USE**
 
 1. Clone this repository with `git clone https://github.com/Fake4091/Travel-Chat-App/`
 
